@@ -36,11 +36,14 @@ SensorCommunicator::SensorCommunicator(const std::string &ip, int port) : ip(ip)
         perror("Bind failed");
         exit(EXIT_FAILURE);
     }
+}
 
+bool SensorCommunicator::connectToSensor()
+{
     if (listen(fd, 5) < 0)
     {
         perror("Bind failed");
-        exit(EXIT_FAILURE);
+        return false;
     }
     std::cout << "Listening for sensor" << std::endl;
 
@@ -49,6 +52,22 @@ SensorCommunicator::SensorCommunicator(const std::string &ip, int port) : ip(ip)
     if (sensor_fd < 0)
     {
         perror("Accept failed");
-        exit(EXIT_FAILURE);
+        return false;
     }
+    return true;
+}
+
+void SensorCommunicator::receiveMessages()
+{
+    listen_thread = std::thread([this]()
+                                {
+        char message_buffer[BUFFER_SIZE];
+        while (is_running) {
+            int bytes_received = recv(fd, message_buffer, BUFFER_SIZE, 0);
+            if (bytes_received > 0) {
+                std::lock_guard<std::mutex> lock(data_mutex);
+                data = std::string(message_buffer, bytes_received);
+            }
+        } });
+    listen_thread.detach();
 }

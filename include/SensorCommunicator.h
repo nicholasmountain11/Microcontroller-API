@@ -53,7 +53,7 @@ public:
      *
      * Should be called before attempting to receive messages.
      */
-    void connectToSensor();
+    bool connectToSensor();
 
     /**
      * @brief Starts a background thread to receive messages from the sensor.
