@@ -71,3 +71,16 @@ void SensorCommunicator::receiveMessages()
         } });
     listen_thread.detach();
 }
+
+std::string SensorCommunicator::getData()
+{
+    std::lock_guard<std::mutex> lock(data_mutex);
+    return data;
+}
+
+SensorCommunicator::~SensorCommunicator()
+{
+    is_running = false;
+    close(fd);
+    close(sensor_fd);
+}
