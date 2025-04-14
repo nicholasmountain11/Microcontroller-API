@@ -30,7 +30,7 @@ public:
      * @param port The port number the sensor listens on.
      * @return The index of the sensor in the internal list.
      */
-    // int addSensor(const std::string &ip, int port);
+    int addSensor();
 
     /**
      * @brief Adds a new actuator to the system and establishes a connection.

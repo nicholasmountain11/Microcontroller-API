@@ -10,7 +10,7 @@
 #include <unistd.h>
 #include "../include/SensorCommunicator.h"
 
-SensorCommunicator::SensorCommunicator(const std::string &ip, int port) : ip(ip), port(port), fd(-1), is_running(false)
+SensorCommunicator::SensorCommunicator() : fd(-1), is_running(false)
 {
     char buffer[BUFFER_SIZE];
     fd = socket(AF_INET, SOCK_STREAM, 0);

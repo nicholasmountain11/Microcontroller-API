@@ -43,10 +43,8 @@ public:
     /**
      * @brief Constructs a new SensorCommunicator instance.
      *
-     * @param ip IP address of the sensor.
-     * @param port Port number for the sensor connection.
      */
-    SensorCommunicator(const std::string &ip, int port);
+    SensorCommunicator();
 
     /**
      * @brief Establishes a TCP connection to the sensor.
