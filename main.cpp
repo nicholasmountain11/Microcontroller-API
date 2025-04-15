@@ -1,4 +1,9 @@
 #include <iostream>
+#include "include/ControllerManager.h"
+// #include <ctime>
+// #include <thread>
+// #include <chrono>
+// #include <memory>
 #include "include/httplib.h"
 #include "include/json.hpp"
 using json = nlohmann::json;
@@ -7,6 +12,8 @@ int main()
 {
     using namespace httplib;
     Server svr;
+    ControllerManager manager;
+    int s = manager.addSensor();
 
     svr.Get("/test", [](const Request &, Response &res)
             {

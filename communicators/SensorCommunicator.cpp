@@ -54,6 +54,8 @@ bool SensorCommunicator::connectToSensor()
         perror("Accept failed");
         return false;
     }
+    std::cout << "Connected to sensor!" << std::endl;
+    is_running = true;
     return true;
 }
 
@@ -63,7 +65,7 @@ void SensorCommunicator::receiveMessages()
                                 {
         char message_buffer[BUFFER_SIZE];
         while (is_running) {
-            int bytes_received = recv(fd, message_buffer, BUFFER_SIZE, 0);
+            int bytes_received = recv(sensor_fd, message_buffer, BUFFER_SIZE, 0);
             if (bytes_received > 0) {
                 std::lock_guard<std::mutex> lock(data_mutex);
                 data = std::string(message_buffer, bytes_received);
