@@ -39,7 +39,7 @@ public:
      * @param port The port number the actuator listens on.
      * @return The index of the actuator in the internal list.
      */
-    //  int addActuator(const std::string &ip, int port);
+    int addActuator();
 
     /**
      * @brief Retrieves the latest data received from a specified sensor.

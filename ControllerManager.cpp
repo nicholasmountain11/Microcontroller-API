@@ -22,6 +22,10 @@ int ControllerManager::addSensor()
     return sensors.size() - 1;
 }
 
+int ControllerManager::addActuator()
+{
+}
+
 std::string ControllerManager::getSensorData(int sensorIdx)
 {
     if (sensorIdx >= 0 && sensorIdx < sensors.size())
