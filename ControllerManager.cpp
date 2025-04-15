@@ -8,6 +8,7 @@
 
 int ControllerManager::addSensor()
 {
+    std::cout << "in addSensor" << std::endl;
     std::shared_ptr<SensorCommunicator> sensor = std::make_shared<SensorCommunicator>();
     if (sensor->connectToSensor())
     {
