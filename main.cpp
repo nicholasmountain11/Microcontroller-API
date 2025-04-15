@@ -22,5 +22,10 @@ int main()
         };
          res.set_content(response.dump(), "application/json"); });
 
+    svr.Get(R"(/sensor/(\d+))", [&](const Request &req, httplib::Response &res)
+            {
+        int sensorId = std::stoi(req.matches[1]);
+        res.set_content(manager.getSensorData(sensorId), "text/plain"); });
+
     svr.listen("0.0.0.0", 8080);
 }
