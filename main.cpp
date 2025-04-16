@@ -14,6 +14,7 @@ int main()
     Server svr;
     ControllerManager manager;
     int s = manager.addSensor();
+    int a = manager.addActuator();
 
     svr.Get("/test", [](const Request &, Response &res)
             {
