@@ -7,6 +7,7 @@
 #define CONTROLLER_MANAGER_H
 
 #include "SensorCommunicator.h"
+#include "ActuatorCommunicator.h"
 #include <vector>
 #include <memory>
 
@@ -20,7 +21,8 @@
 class ControllerManager
 {
 private:
-    std::vector<std::shared_ptr<SensorCommunicator>> sensors; /**< List of connected sensor communicators */
+    std::vector<std::shared_ptr<SensorCommunicator>> sensors;     /**< List of connected sensor communicators */
+    std::vector<std::shared_ptr<ActuatorCommunicator>> actuators; /**< List of connected sensor communicators */
 
 public:
     /**
@@ -55,7 +57,7 @@ public:
      * @param actuatorIdx The index of the actuator in the internal list.
      * @param message The command message to send.
      */
-    //  void sendActuatorCommand(int actuatorIdx, const std::string &message);
+    void sendActuatorCommand(int actuatorIdx, const std::string &message);
 };
 
 #endif // CONTROLLER_MANAGER_H

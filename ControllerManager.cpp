@@ -24,6 +24,14 @@ int ControllerManager::addSensor()
 
 int ControllerManager::addActuator()
 {
+    std::shared_ptr<ActuatorCommunicator> actuator = std::make_shared<ActuatorCommunicator>();
+    if (!actuator->connectToActuator())
+    {
+        perror("Failed to connect to actuator");
+        return -1;
+    }
+    actuators.push_back(actuator);
+    return actuators.size() - 1;
 }
 
 std::string ControllerManager::getSensorData(int sensorIdx)
@@ -33,4 +41,16 @@ std::string ControllerManager::getSensorData(int sensorIdx)
         return sensors[sensorIdx]->getData();
     }
     return "Invalid sensor index";
+}
+
+void ControllerManager::sendActuatorCommand(int actuatorIdx, const std::string &message)
+{
+    if (actuatorIdx >= 0 && actuatorIdx < actuators.size())
+    {
+        actuators[actuatorIdx]->sendMessage(message);
+    }
+    else
+    {
+        std::cout << "Invalid sensor index" << std::endl;
+    }
 }
