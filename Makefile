@@ -8,7 +8,7 @@ CXXFLAGS = -Wall -Wextra -std=c++11 -pthread
 TARGET = main
 
 # Source files
-SRCS = main.cpp communicators/SensorCommunicator.cpp ControllerManager.cpp
+SRCS = main.cpp communicators/SensorCommunicator.cpp communicators/ActuatorCommunicator.cpp ControllerManager.cpp
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)
