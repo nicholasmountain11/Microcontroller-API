@@ -14,7 +14,6 @@
 
 ActuatorCommunicator::ActuatorCommunicator() : fd(-1)
 {
-    char buffer[BUFFER_SIZE];
     fd = socket(AF_INET, SOCK_STREAM, 0);
     if (fd < 0)
     {
@@ -70,4 +69,10 @@ void ActuatorCommunicator::sendMessage(const std::string &message)
     {
         std::cout << "Send: " << message << std::endl;
     }
+}
+
+ActuatorCommunicator::~ActuatorCommunicator()
+{
+    close(fd);
+    close(actuator_fd);
 }
