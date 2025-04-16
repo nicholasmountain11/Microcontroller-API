@@ -50,7 +50,10 @@ int main()
         {
             break;
         }
-        std::cout << "Message from client: " << buffer << std::endl;
+        else
+        {
+            std::cout << "Message from client: " << buffer << std::endl;
+        }
     }
 
     close(fd);
