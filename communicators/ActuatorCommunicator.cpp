@@ -61,8 +61,9 @@ bool ActuatorCommunicator::connectToActuator()
 
 void ActuatorCommunicator::sendMessage(const std::string &message)
 {
-    if (send(fd, message.c_str(), message.length(), 0) < 0)
+    if (send(actuator_fd, message.c_str(), message.length(), 0) < 0)
     {
+        std::cout << "actComm: Couldn't send message" << std::endl;
         perror("Failed to send message");
     }
     else
