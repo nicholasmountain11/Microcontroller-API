@@ -3,14 +3,16 @@
 // docs for dht11 can be found here: https://github.com/dhrubasaha08/DHT11
 #include <DHT11.h>
 
+#include "../../../include/secrets.h"
+
 #define SENSOR 2 // define sensor pin
 
 // Network credentials
-const char* ssid = "****";
-const char* password = "****";
+const char* ssid = HOTSPOT_SSID;
+const char* password = HOTSPOT_PASSWORD;
 
 // server ip and port
-const char* server_ip = "18.118.14.29";
+const char* server_ip = SERVER_IP;
 const uint16_t server_port = 9001;
 
 // TCP client

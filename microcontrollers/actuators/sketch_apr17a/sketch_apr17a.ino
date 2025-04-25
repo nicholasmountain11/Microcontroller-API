@@ -1,11 +1,13 @@
 #include <WiFi.h>
 
+#include "../../../include/secrets.h"
+
 #define LED 2
 
-const char* ssid = "******";
-const char* password = "******";
+const char* ssid = "HOTSPOT_SSID";
+const char* password = "HOTSPOT_PASSWORD";
 
-const char* server_ip = "192.168.1.157";
+const char* server_ip = "18.118.14.29";
 const uint16_t server_port = 9002;
 
 WiFiClient client;
