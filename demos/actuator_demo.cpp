@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <ctime>
 #include <thread>
+#include "../include/secrets.h"
 
 #define PORT 9002
 #define BUFFER_SIZE 4096
@@ -30,7 +31,7 @@ int main()
     struct sockaddr_in sock_addr;
     sock_addr.sin_family = AF_INET;
     sock_addr.sin_port = htons(PORT);
-    if (inet_pton(AF_INET, "127.0.0.1", &sock_addr.sin_addr) <= 0)
+    if (inet_pton(AF_INET, SERVER_IP, &sock_addr.sin_addr) <= 0)
     {
         perror("Invalid address");
         exit(EXIT_FAILURE);
@@ -41,7 +42,7 @@ int main()
         perror("Connection failed");
         exit(EXIT_FAILURE);
     }
-    std::cout << "Connected to server at " << "127.0.0.1" << ":" << PORT << std::endl;
+    std::cout << "Connected to server at " << SERVER_IP << ":" << PORT << std::endl;
 
     while (true)
     {
