@@ -53,9 +53,10 @@ void loop() {
 
       if (result == 0) {
         // if read successful, convert to json syntax and send to server
-        String data = "{temperature:" + String(temperature) + ", humidity:" + String(humidity) + "}";
+        String data = "{\"temperature\": " + String(temperature) + ", \"humidity\": " + String(humidity) + "}";
         Serial.println("Sending: " + data);
         client.print(data);
+
       }
       delay(1000);
     } else {
