@@ -30,7 +30,7 @@ int main()
     struct sockaddr_in sock_addr;
     sock_addr.sin_family = AF_INET;
     sock_addr.sin_port = htons(PORT);
-    if (inet_pton(AF_INET, SERVER_IP, &sock_addr.sin_addr) <= 0)
+    if (inet_pton(AF_INET, LOCAL_HOST, &sock_addr.sin_addr) <= 0)
     {
         perror("Invalid address");
         exit(EXIT_FAILURE);
@@ -41,12 +41,12 @@ int main()
         perror("Connection failed");
         exit(EXIT_FAILURE);
     }
-    std::cout << "Connected to server at " << SERVER_IP << ":" << PORT << std::endl;
+    std::cout << "Connected to server at " << LOCAL_HOST << ":" << PORT << std::endl;
 
     while (true)
     {
         int random_number = rand() % 100;
-        std::string message = "Number: " + std::to_string(random_number);
+        std::string message = "{\"temperature\": " + std::to_string(random_number) + ", \"humidity\": " + std::to_string(random_number) + "}";
         std::cout << "Message: " << message << std::endl;
         const char *c_str_message = message.c_str();
         int sent_bytes = send(fd, c_str_message, strlen(c_str_message), 0);
