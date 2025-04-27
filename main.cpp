@@ -26,7 +26,8 @@ int main()
     svr.Get(R"(/sensor/(\d+))", [&](const Request &req, Response &res)
             {
         int sensorId = std::stoi(req.matches[1]);
-        res.set_content(manager.getSensorData(sensorId), "text/plain"); });
+        json response = manager.getSensorData(sensorId);
+        res.set_content(response, "application/json"); });
 
     svr.Post(R"(/actuator/(\d+))", [&](const Request &req, Response &res)
              {

@@ -10,6 +10,8 @@
 #include "ActuatorCommunicator.h"
 #include <vector>
 #include <memory>
+#include "json.hpp"
+using json = nlohmann::json;
 
 /**
  * @class ControllerManager
@@ -49,7 +51,7 @@ public:
      * @param sensorIdx The index of the sensor in the internal list.
      * @return The latest sensor data, or an error message if the index is invalid.
      */
-    std::string getSensorData(int sensorIdx);
+    json getSensorData(int sensorIdx);
 
     /**
      * @brief Sends a command to a specified actuator.

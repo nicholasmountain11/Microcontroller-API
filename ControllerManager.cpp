@@ -5,6 +5,8 @@
 
 #include "include/ControllerManager.h"
 #include <iostream>
+#include "include/json.hpp"
+using json = nlohmann::json;
 
 int ControllerManager::addSensor()
 {
@@ -34,11 +36,13 @@ int ControllerManager::addActuator()
     return actuators.size() - 1;
 }
 
-std::string ControllerManager::getSensorData(int sensorIdx)
+json ControllerManager::getSensorData(int sensorIdx)
 {
     if (sensorIdx >= 0 && sensorIdx < sensors.size())
     {
-        return sensors[sensorIdx]->getData();
+        std::string response = sensors[sensorIdx]->getData();
+        json result = json::parse(response);
+        return result.dump();
     }
     return "Invalid sensor index";
 }
