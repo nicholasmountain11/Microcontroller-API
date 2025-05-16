@@ -4,10 +4,10 @@
 
 #define LED 2
 
-const char* ssid = HOTSPOT_SSID;
-const char* password = HOTSPOT_PASSWORD;
+const char* ssid = HOME_SSID;
+const char* password = HOME_PASSWORD;
 
-const char* server_ip = "18.118.14.29";
+const char* server_ip = LAPTOP_IP;
 const uint16_t server_port = 9002;
 
 WiFiClient client;

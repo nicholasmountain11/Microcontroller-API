@@ -8,11 +8,11 @@
 #define SENSOR 2 // define sensor pin
 
 // Network credentials
-const char* ssid = HOTSPOT_SSID;
-const char* password = HOTSPOT_PASSWORD;
+const char* ssid = HOME_SSID;
+const char* password = HOME_PASSWORD;
 
 // server ip and port
-const char* server_ip = SERVER_IP;
+const char* server_ip = LAPTOP_IP;
 const uint16_t server_port = 9001;
 
 // TCP client
