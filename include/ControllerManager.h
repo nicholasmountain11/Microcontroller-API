@@ -30,8 +30,6 @@ public:
     /**
      * @brief Adds a new sensor to the system and begins receiving data from it.
      *
-     * @param ip The IP address of the sensor.
-     * @param port The port number the sensor listens on.
      * @return The index of the sensor in the internal list.
      */
     int addSensor();
@@ -39,8 +37,6 @@ public:
     /**
      * @brief Adds a new actuator to the system and establishes a connection.
      *
-     * @param ip The IP address of the actuator.
-     * @param port The port number the actuator listens on.
      * @return The index of the actuator in the internal list.
      */
     int addActuator();

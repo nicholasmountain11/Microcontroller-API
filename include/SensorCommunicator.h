@@ -28,9 +28,7 @@
 class SensorCommunicator
 {
 private:
-    std::string ip; /**< IP address of the sensor */
-    int port;       /**< Port number used to connect to the sensor */
-    int fd;         /**< File descriptor for the TCP socket */
+    int fd; /**< File descriptor for the TCP socket */
     int sensor_fd;
     struct sockaddr_in sensor_addr;
     struct sockaddr_in sock_addr; /**< Address structure for the sensor */

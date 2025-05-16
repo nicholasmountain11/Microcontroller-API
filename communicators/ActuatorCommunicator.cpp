@@ -1,3 +1,8 @@
+/**
+ * @file ActuatorCommunicator.cpp
+ * @brief Implementation of the ActuatorCommunicator class, which manages TCP communication with an actuator device.
+ */
+
 #include <iostream>
 #include <cstring>
 #include <sys/socket.h>
@@ -8,9 +13,6 @@
 #include <thread>
 #include <chrono>
 #include "../include/ActuatorCommunicator.h"
-
-#define PORT 9002
-#define BUFFER_SIZE 4096
 
 ActuatorCommunicator::ActuatorCommunicator() : fd(-1)
 {

@@ -13,6 +13,9 @@
 #include <unistd.h>
 #include <thread>
 
+#define PORT 9002
+#define BUFFER_SIZE 4096
+
 /**
  * @class ActuatorCommunicator
  * @brief Handles TCP socket communication with a remote actuator.
@@ -23,9 +26,7 @@
 class ActuatorCommunicator
 {
 private:
-    std::string ip; /**< IP address of the actuator */
-    int port;       /**< Port number used to connect to the actuator */
-    int fd;         /**< File descriptor for the socket */
+    int fd; /**< File descriptor for the socket */
     int actuator_fd;
     struct sockaddr_in actuator_addr;
     struct sockaddr_in sock_addr; /**< Struct for storing actuator address info */
@@ -35,9 +36,6 @@ public:
      * @brief Constructs a new ActuatorCommunicator instance.
      *
      * Initializes the socket and prepares the address structure for connection.
-     *
-     * @param ip The IP address of the actuator.
-     * @param port The port number to connect to.
      */
     ActuatorCommunicator();
 
